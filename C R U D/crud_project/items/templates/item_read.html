@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listagem de Itens</h1>
+    <a href="{% url 'item_create' %}">Criar um novo Item</a>
+    <ul>
+        {% for item in items %}
+        <li>
+            {{item.name }} - {{item.descricao}}
+            <a href="{% url 'item_update' item.pk %}">Editar</a>
+            <a href="{% url 'item_delete' item.pk %}">Deletar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

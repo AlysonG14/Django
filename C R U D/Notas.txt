@@ -1,0 +1,2 @@
+as_p -> Ele permite que vai preencher todas informações dadas aos modelos.
+csrf_token -> Permite que carrega o token que você vai pegar pelo POST, se não, gerará erro.

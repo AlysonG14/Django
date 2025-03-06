@@ -1,25 +1,35 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 </head>
 <body>
     <h2>
-        Lista de Produtos
+        Ecommerce
     </h2>
-    <ol>
-        {% for i in meuecommerce%}
-        <li>
-            {{ meuecommerce.number}}
-            {{ meuecommerce.titulo}}
-            {{ meuecommerce.descricao}}
-        </li>
-
-        {% endfor %}
-
-    </ol>
+        <ol>
+            {% for i in meuecommerce %} 
+                    <div class="nav-item">
+                        <li>
+                            <div class="Imagens">
+                                <img src="{{ i.image.url }}" alt="{{ i.titulo }}">
+                                    <div class="TituloDescricao">
+                                        <p><strong>{{ i.nome|slice:"200"}}</strong></p>
+                                    </div>
+                                    <div class="preco">
+                                        <a href="">R$ {{ i.preco }}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
+                {% endfor %}
+                </ol>
     
-</body>
+    </body>
 </html>

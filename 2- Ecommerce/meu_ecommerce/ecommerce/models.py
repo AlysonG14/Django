@@ -3,12 +3,11 @@ from django.db import models
 # Create your models here.
 
 class Ecommerce(models.Model):
-    number = models.IntegerField()
-    titulo = models.CharField(max_length=255)
-    descricao = models.CharField(max_length=255)
-    image = models.ImageField(upload_to=None, max_length= 100)
+    nome = models.CharField(max_length=255)
+    preco = models.DecimalField(max_digits=6, decimal_places=2)
+    image = models.ImageField(upload_to="produtos/")
     data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __int__(self):
-        return self.number
+        return self.titulo
 

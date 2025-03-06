@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Lista de Tarefas
+        </title>
+    </head>
+    <body>
+        <h1>
+            Lista de Tarefas
+        </h1>
+            <ol>
+                {% for tarefa in todolist %}
+                <li>
+                    <h4>
+                    </h4>
+                        <p>
+                            <strong>{{ tarefa.descricao|slice:"200" }}</strong>
+                        </p>
+                        <p>
+                            Status: {{ tarefa.status }}
+                        </p>
+                    </li>
+                {% endfor %}
+                </ol>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(220, 239, 255);
+}
+
+
+img {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    border: solid rgb(0, 195, 255);
+    transition: 1s;
+}
+
+
+h2 {
+    color: darkblue;
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+th,
+a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+}
+
+header {
+    background-color: rgb(49, 165, 201);
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+.Imagens {
+    padding: 10px;
+    text-align: center;
+}
+
+.Imagens img:hover {
+    transform: scale(1.0);
+}
+
+.nav-item {
+    width: 250px;
+
+}
+
+.preco {
+    color: rgb(255, 255, 255);
+    border-radius: 300px;
+    display: grid;
+    justify-content: center;
+    cursor: pointer;
+    background-color: rgb(0, 73, 0);
+    width: 200px;
+    height: 50px;
+    align-items: center;
+    align-self: center;
+    margin-left: 20px;
+    transition: 1s;
+
+}
+
+.preco :hover {
+    transform: scale(1.0);
+}
+
+.TituloDescricao {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

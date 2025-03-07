@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Blog</title>
+</head>
+
+<body>
+    <h1>
+        Blog
+    </h1>
+
+    <!--Lista de Postagens-->
+
+    <ul>
+        {% for postagem in postagens %}
+        <li>
+            <h2>
+                {{ postagem.titulo }}
+            </h2>
+            <p>
+                {{ postagem.conteudo|slice:"200" }}...
+            </p>
+            <p>Link: {{ postagem.link }}</p>
+            <p>
+            <nav>
+                <a href="#">Leia Mais</a>
+                {% include "blog/detalhes_postagens.html" %}
+            </nav>
+            </p>
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

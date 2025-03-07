@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <h2>
+            Ecommerce
+        </h2>
+    </header>
+    <main>
+        <ol>
+            {% for i in meuecommerce %}
+            <div class="nav-item">
+                <li>
+                    <div class="Imagens">
+                        <img src="{{ i.image.url }}" alt="{{ i.titulo }}">
+                        <div class="TituloDescricao">
+                            <p><strong>{{ i.nome|slice:"200"}}</strong></p>
+                        </div>
+                        <div class="preco">
+                            <a
+                                href="https://www.amazon.com.br/?&tag=hydrbrabk-20&ref=pd_sl_7rwd1q78df_e&adgrpid=155790195778&hvpone=&hvptwo=&hvadid=677606588104&hvpos=&hvnetw=g&hvrand=18432029367674344757&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9100341&hvtargid=kwd-10573980&hydadcr=26346_11691057&gad_source=1">R$
+                                {{ i.preco }}</a>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            {% endfor %}
+        </ol>
+    </main>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>

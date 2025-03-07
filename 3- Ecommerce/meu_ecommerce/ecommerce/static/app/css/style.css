@@ -43,10 +43,12 @@ header {
 .Imagens {
     padding: 10px;
     text-align: center;
+    transition: 1s;
+    
 }
 
 .Imagens img:hover {
-    transform: scale(1.0);
+    transform: scale(1.1);
 }
 
 .nav-item {
@@ -71,7 +73,7 @@ header {
 }
 
 .preco :hover {
-    transform: scale(1.0);
+    transform: scale(1.1);
 }
 
 .TituloDescricao {

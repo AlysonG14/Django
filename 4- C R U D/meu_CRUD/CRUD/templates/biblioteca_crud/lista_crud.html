@@ -12,8 +12,10 @@
         <ul>
           {% for i in lista_crud %}
           <li>
-            <p>{{ % i.titulo %}}</p>
-            <p>{{  }}</p>
+            <p>{{% i.titulo %}}</p>
+            <p>{{% i.autor %}}</p>
+            <p>{{% i.ano_publicacao %}}</p>
+            <p>{{% i.informacoes|slice: 200... %}}</p>
           </li>
 
           {% endfor %}

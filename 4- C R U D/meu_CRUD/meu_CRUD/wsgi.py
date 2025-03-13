@@ -1,5 +1,5 @@
 """
-WSGI config for meu_CRUD project.
+WSGI config for meu_crud project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'meu_CRUD.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'meu_crud.settings')
 
 application = get_wsgi_application()

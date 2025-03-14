@@ -23,6 +23,11 @@ def detalhe_aluno(request, pk):
     serializer = AlunoSerializer(aluno)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+@api_view(['GET'])
+def proximo_evento(request):
+    alunos = Aluno.objects.all()
+
+
 
 @api_view(['POST'])
 def criar_aluno(request):

@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C R U D</title>
 </head>
+
 <body>
     <h1>
-        
+        Biblioteca de Livros
     </h1>
-    
+
+    <ol>
+        {% for i in lista_crud %}
+        <li>
+            <h2>{{ i.titulo }}</h2>
+            <h3>{{ i.autor }}</h3>
+            <p>Data de Publicação{{ i.ano_publicacao }}</p>
+            <p>{{ i.descricao }}</p>
+            <a href="{% url 'criar.html' %}">Criar</a>
+            <a href="{% url 'delete.html' %}">Deletar</a>
+        </li>
+        {% endfor %}
+    </ol>
+
 </body>
+
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C R U D</title>
+</head>
+    <body>
+        <section>
+            <article>
+                <form method="GET">
+                    {% csrf_token %}
+                    <input type="text" name="titulo" placeholder="Nome do Livro" value="{{ request.GET.titulo }}">
+                    <input type="text" name="autor" placeholder="Nome do Autor" value="{{ request.GET.autor }}">
+                    <input type="text" name="ano" placeholder="Ano de Publicação" value="{{ request.GET.ano }}">
+                    <button type="submit">Buscar</button>
+                </form>
+                {% if livros %}
+                    <ul>
+                        {% for livro in livros %}
+                            <li>{{ livro.titulo }} - {{ livro.autor }} ({{ livro.ano_de_publicacao }})</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <li>
+                            Livro não Encontrado. Tente novamente a pesquisa!
+                        </li>
+                    {% endif %}
+
+                    <a href="{% url 'lista_crud.html' %}">Início</a>
+
+            </article>
+        </section>
+    
+    </body>
+</html>

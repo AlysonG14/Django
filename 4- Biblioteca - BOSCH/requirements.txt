@@ -1,1 +1,7 @@
-Looking in indexes: https://anu9rng:****@rb-artifactory.bosch.com/artifactory/api/pypi/python-virtual/simple
+asgiref==3.8.1
+Django==5.1.7
+django-restframework==0.0.1
+djangorestframework==3.15.2
+pillow==11.1.0
+sqlparse==0.5.3
+tzdata==2025.1

@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(199, 224, 250);
+}
+
+mark {
+    background-color: aqua;
+    border-radius: 100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+#title-header {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    font-size: larger;
+
+}
+
+#card-page1{
+    border: solid;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+
+}
+
+
+#card-page2 {
+    border: solid;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+
+}
+
+#card-page3 {
+    border: solid;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    
+
+}
+
+#card-page4 {
+    border: solid;
+    display: inline-block; /* O elemento gera uma ou mais caixas de elemento em linha que não geram quebras de linha antes ou depois de si mesmas. */
+    text-align: center;
+    padding: 10px;
+}   

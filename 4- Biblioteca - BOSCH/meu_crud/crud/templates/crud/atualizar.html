@@ -7,16 +7,17 @@
 </head>
     <body>
         <h1>
-            Criar Livros
+            Atualizar dados do Livros
         </h1>
             <section>
                 <article>
-                        <form method="POST">
-                            {% csrf_token %}
-                            {{ form.as_p }} 
-                            <button type="submit">Criar</button>
-                        </form>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Atualizar dados</button>
+                    </form>
                 </article>
             </section>
+    
     </body>
 </html>

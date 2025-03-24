@@ -1,29 +1,51 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C R U D</title>
+    <link rel="stylesheet" type='text/css' href="{% static 'css/main.css' %}" >
 </head>
 
 <body>
+    <div id="title-header">
     <h1>
-        Biblioteca de Livros
+        <i><mark>Biblioteca de Livros</mark></i>
     </h1>
+</div>
 
-    <ol>
-        {% for i in lista_crud %}
+    <hr>
+    <br>
+    <section>
+        <ol>
+            {% for i in lista_crud %}
         <li>
-            <h2>{{ i.titulo }}</h2>
-            <h3>{{ i.autor }}</h3>
-            <p>Data de Publicação{{ i.ano_publicacao }}</p>
-            <p>{{ i.descricao }}</p>
-            <a href="{% url 'criar.html' %}">Criar</a>
-            <a href="{% url 'delete.html' %}">Deletar</a>
+            <article>
+                <h2>{{ i.titulo }}</h2>
+                <h3>{{ i.autor }}</h3>
+                    <p>Data de Publicação: {{ i.ano_publicacao }}</p>
+                    <p>{{ i.descricao }}</p> 
+                        <div id="card-page1">
+                            <a href="{% url 'criar.html' %}">Criar</a>
+                        </div>
+                        <div id="card-page2">
+                            <a href="{% url 'atualizar.html' pk=i.pk %}">Atualizar</a>
+                        </div>
+                        <div id="card-page3">
+                            <a href="{% url 'delete.html' pk=i.pk %}">Deletar</a>
+                        </div>
+                        <div id="card-page4">
+                            <a href="{% url 'busca.html' %}">Buscar</a>
+                        </div>
+            </article>
         </li>
-        {% endfor %}
-    </ol>
+            {% endfor %}
+            </ol>
+        </section>
 
 </body>
 

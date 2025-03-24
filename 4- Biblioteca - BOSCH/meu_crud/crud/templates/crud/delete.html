@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C R U D</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+    <body>
+        <div id="title-header">
+            <h1>
+                <i><mark>Deletar Livros</mark></i>
+            </h1>
+            <section>
+                <article>
+                    <ol>
+                        <p>Tem certeza, que deseja excluir o livro?</p>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Sim, desejo excluir!</button>
+                        </form>
+                        <a href="{% url 'lista_crud.html' %}">Voltar</a>
+                    </ol>
+                </article>
+            </section>
+    </body>
+</html>

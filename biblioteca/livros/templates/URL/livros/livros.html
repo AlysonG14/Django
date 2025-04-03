@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBLIOTECA</title>
+</head>
+<body>
+    <h2>
+        Lista de Livros
+    </h2>
+        <ol>
+            {% for i in listar_livros %}
+            
+                <li><strong>Nome do Livro:</strong> {{ i.titulo }}</li>
+                <p><strong>Autor:</strong> {{ i.autor }}</p>
+                <p><strong>Páginas:</strong> {{ i.paginas }}</p>
+
+            {% endfor %}
+        </ol>
+    
+</body>
+</html>

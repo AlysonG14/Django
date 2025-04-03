@@ -9,5 +9,4 @@ urlpatterns = [
     path('crud/deletar/<int:pk>', views.delete_book, name='delete.html'),
     path('crud/busca/', views.search_book, name='busca.html')
 
-
 ]

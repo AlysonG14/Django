@@ -19,14 +19,14 @@ def detalhe_aluno(request, pk):
     try:
         aluno = Aluno.objects.get(pk=pk)
     except Aluno.DoesNotExist:
-        return Response("{'Erro': 'O aluno não foi Encontrado''}", status=status.HTTP_404_NOT_FOUND)
+        return Response("{'Erro': 'O aluno não foi Encontrado'}", status=status.HTTP_404_NOT_FOUND)
     serializer = AlunoSerializer(aluno)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 @api_view(['GET'])
 def proximo_evento(request):
     alunos = Aluno.objects.all()
-
 
 
 @api_view(['POST'])
@@ -37,8 +37,8 @@ def criar_aluno(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    
+
+
 @api_view(['PUT'])
 def alterar_aluno(request, pk):
     try:
@@ -60,6 +60,7 @@ def deletar_informacoes(request, pk):
         return Response("{'Erro': 'Informações não encontrado'}", status=status.HTTP_404_NOT_FOUND)
     aluno.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(['GET'])
 def macharete(request, text):

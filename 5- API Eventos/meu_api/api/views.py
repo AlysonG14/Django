@@ -9,11 +9,22 @@ from datetime import datetime, timedelta
 # Create your views here.
 
 @api_view(['GET'])
+def categorias_disponiveis(request):
+    CATEGORA = [
+    ("Música", "Música"),
+    ("Acampamento", "Acampamento"),
+    ("Workshop", "Workshop"),
+    ("Palestra", "Palestra"),
+    ]
+    categorias = [c[0] for c in CATEGORIA]
+    return Response({"Categorias": categorias})
+
+@api_view(['GET'])
 def lista_evento(request):
     eventos = Evento.objects.all()
     categoria = request.GET.get('categoria')
     if categoria:
-        eventos = eventos.filter(categoria__nome__iexact=categoria)
+        eventos = eventos.filter(categoria__iexact=categoria)
 
     data = request.GET.get('data')
     if data:
@@ -44,7 +55,7 @@ def lista_evento(request):
 def proximo_evento(request):
     hoje = datetime.now()
     limite = hoje + timedelta(days=7)
-    eventos = Evento.objects.filter(data_evento__range=(hoje, limite)).order_by('data_evento    ')
+    eventos = Evento.objects.filter(data_evento__range=(hoje, limite)).order_by('data_evento')
     serializer = EventoSerializer(eventos, many=True)
     return Response(serializer.data)
 

@@ -3,10 +3,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-    
-=======
->>>>>>> 31931de (Uploading file 27/03)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,16 +29,16 @@
                     <p>Data de Publicação: {{ i.ano_publicacao }}</p>
                     <p>{{ i.descricao }}</p> 
                         <div id="card-page1">
-                            <a href="{% url 'criar.html' %}">Criar</a>
+                            <a href="{% url 'criar' %}">Criar</a>
                         </div>
                         <div id="card-page2">
-                            <a href="{% url 'atualizar.html' pk=i.pk %}">Atualizar</a>
+                            <a href="{% url 'atualizar' i.pk %}">Atualizar</a>
                         </div>
                         <div id="card-page3">
-                            <a href="{% url 'delete.html' pk=i.pk %}">Deletar</a>
+                            <a href="{% url 'delete' i.pk %}">Deletar</a>
                         </div>
                         <div id="card-page4">
-                            <a href="{% url 'busca.html' %}">Buscar</a>
+                            <a href="{% url 'busca' %}">Buscar</a>
                         </div>
             </article>
         </li>

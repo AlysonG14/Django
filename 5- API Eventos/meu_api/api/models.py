@@ -17,6 +17,6 @@ class Evento(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.nome}-{self.descricao}'
+        return f'{self.nome}'
     class Meta:
         verbose_name_plural = "Eventos"

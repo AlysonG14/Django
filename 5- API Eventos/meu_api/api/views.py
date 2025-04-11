@@ -55,7 +55,7 @@ def lista_evento(request):
 def proximo_evento(request):
     hoje = datetime.now()
     limite = hoje + timedelta(days=7)
-    eventos = Evento.objects.filter(data_evento__range=(hoje, limite)).order_by('data_evento')
+    eventos = Evento.objects.filter(data_hora__range=(hoje, limite)).order_by('data_hora')
     serializer = EventoSerializer(eventos, many=True)
     return Response(serializer.data)
 

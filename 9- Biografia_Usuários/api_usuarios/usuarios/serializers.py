@@ -1,18 +1,18 @@
 from rest_framework import serializers
-from .models import Pato, DonoDoPato
+from .models import Usuario, UsuarioAuthenticate
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-class PatoSerializer(serializers.ModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Pato
-        fields = '__all__'
-        ready_only_fields = ['id', 'cagaTorrada']
+        model = Usuario
+        fiels = '__all__'
+        ready_only_fields = ['nome']
 
-class DonoDoPatoSerializer(serializers.ModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = DonoDoPato
+        model = UsuarioAuthenticate
         fields = '__all__'
 
 class LoginSerializer(serializers.Serializer):
@@ -24,16 +24,16 @@ class LoginSerializer(serializers.Serializer):
         password = attrs.get('password')
         if username and password:
             usuario = authenticate(request=self.context.get('request'),
-                               username=username, password=password)
+                                   username=username, password=password)
             
             if not usuario:
                 mensagem = 'Credencial não identificada'
                 raise serializers.ValidationError(mensagem, code='authorization')
-        
+            
             if not usuario.is_active:
-                mensagem = "Conta desativada"
+                mensagem = 'Conta desativada'
                 raise serializers.ValidationError(mensagem, code='authorization')
-        
+            
             refresh = RefreshToken.for_user(usuario)
 
             attrs['usuario'] = usuario
@@ -42,9 +42,9 @@ class LoginSerializer(serializers.Serializer):
 
             return attrs
         else:
-            mensagem = "Username ou senha não inseridos"
+            mensagem = 'Username ou senha não inseridos'
             raise serializers.ValidationError(mensagem, code='authorization')
-        
+
 class LoginSerializer2(TokenObtainPairSerializer):
     def validate(self, attrs):
         dados = super().validate(attrs)

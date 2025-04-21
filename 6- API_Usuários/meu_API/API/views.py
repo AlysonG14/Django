@@ -40,6 +40,7 @@ def create_user(request):
     
     usuario = Usuario.objects.create_user(
         username=nome, # Ele é obrigatório usar no 'Django'
+        password=telefone,
         nome=nome,
         idade=idade,
         telefone=telefone,
@@ -57,14 +58,21 @@ def logar(request):
     usuario = authenticate(username=nome, password=telefone)
 
     if usuario:
-        refresh = RefreshToken.for_user(nome)
+        refresh = RefreshToken.for_user(usuario)
         return Response({
             'access': str(refresh.access_token),
             'refresh': str(refresh),
             
-        }, status=status.HTP_200_OK)
+        }, status=status.HTTP_200_OK)
     else:
-        return Response({'Erro': 'Usuário ou senha incorreta'})
+        return Response({'Erro': 'Usuário ou senha incorreta'}, status=status.HTTP_401_UNAUTHORIZED)
+    
+@api_view(['GET'])
+@permission_classes([IsAuthenticated]) # Vamos adicionar uma permissão de segurança da rota
+def usuario_logado(request):
+    usuario = request.user
+    serializer = UsuarioSerializer(usuario)
+    return Response(serializer.data)
     
 
     

@@ -48,6 +48,8 @@ REST_FRAMEWORK = {
     )
 }
 
+AUTH_USER_MODEL = 'API.Usuario'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

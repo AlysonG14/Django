@@ -7,8 +7,8 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fiels = '__all__'
-        ready_only_fields = ['nome']
+        fields = '__all__'
+        read_only_fields = ['nome']
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,12 +27,10 @@ class LoginSerializer(serializers.Serializer):
                                    username=username, password=password)
             
             if not usuario:
-                mensagem = 'Credencial não identificada'
-                raise serializers.ValidationError(mensagem, code='authorization')
+                raise serializers.ValidationError('Credencial não Autenticado', code='authorization')
             
             if not usuario.is_active:
-                mensagem = 'Conta desativada'
-                raise serializers.ValidationError(mensagem, code='authorization')
+                raise serializers.ValidationError('Conta Desativada', code='authorization')
             
             refresh = RefreshToken.for_user(usuario)
 
@@ -42,14 +40,13 @@ class LoginSerializer(serializers.Serializer):
 
             return attrs
         else:
-            mensagem = 'Username ou senha não inseridos'
-            raise serializers.ValidationError(mensagem, code='authorization')
+            raise serializers.ValidationError('Username ou senha não inseridos', code='authorization')
 
 class LoginSerializer2(TokenObtainPairSerializer):
     def validate(self, attrs):
         dados = super().validate(attrs)
         dados['usuario'] = {
             'nome': self.user.username,
-            'bio': self.user.bio
+            'bio': self.user.bio if hasattr(self.user, 'bio') else 'Bio não definida'
         }
         return dados

@@ -7,6 +7,7 @@ from rest_framework import serializers, status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.authentication import SessionAuthentication
 
 # Create your views here.
 
@@ -15,11 +16,12 @@ class UsuarioPaginacao(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 10
 
-class UsuarioListCreateAPIVoew(ListCreateAPIView):
+class UsuarioListCreateAPIView(ListCreateAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     pagination_class = UsuarioPaginacao
     permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication]
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -36,15 +38,21 @@ class UsuarioRetrieveUpdateDestroyAPIViews(RetrieveDestroyAPIView):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer
     lookup_field = 'pk'
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [SessionAuthentication]
 
     def put(self, request, *args, **kwargs):
+        data = request.data.copy()
         idade = request.data.get('idade')
-        if int(idade) < 14:
-
-            data = request.data.copy()
+        if idade is not None and int(idade)< 14:
             data['escolaridade'] = 'Ensino Fundamental'
-            request._full_data = data
-        return super().put(request, *args, **kwargs)
+
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=data)
+        serializer.is_valid()
+        self.perform_update(serializer)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class LoginView(CreateAPIView):
     serializer_class = LoginSerializer
@@ -53,7 +61,6 @@ class LoginView(CreateAPIView):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
         usuario = serializer.validated_data['usuario']
         usuario_serializer = UsuarioAuthenticate(usuario)
 
@@ -63,6 +70,6 @@ class LoginView(CreateAPIView):
             'access': serializer.validated_data['access'],
         }, status=status.HTTP_200_OK)
 
-class LoginView2(TokenObtainPairView):
+class Login(TokenObtainPairView):
     serializer_class = LoginSerializer2
     

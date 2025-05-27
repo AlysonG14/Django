@@ -79,7 +79,7 @@ def criar_evento(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-@api_view(['PUT'])
+@api_view(['PATCH'])
 def atualizar_evento(request, pk):
     try:
         evento = Evento.objects.get(pk=pk)
